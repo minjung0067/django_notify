@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <p>{{ user.username }}</p>
+    <a href="javascript:{document.getElementById('logout').submit()}">로그아웃</a>
+    <form id="logout" method="POST" action="{% url 'logout' %}">
+        {% csrf_token %} <input type="hidden" />
+    </form>
+    {% else %}
+        <a href="{% url 'signup' %}">회원가입</a>
+        <a href="{% url 'login' %}">로그인</a>
+    {% endif %}
+    <a href="{% url 'create' %}">새 글쓰기</a>
+    {% for post in posts %}
+        <h1>{{post.title}}</h1>
+        <p>{{post.pub_date }}</p>
+        <p>{{post.content}}</p>
+    {% endfor %}
+        
+</body>
+</html>
