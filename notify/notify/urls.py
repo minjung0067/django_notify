@@ -24,5 +24,7 @@ urlpatterns = [
     path('signup/', app.views.signup, name='signup'),
     path('logout/', app.views.logout, name='logout'),
     path('new/', app.views.new, name='new'),
-    path('create/', app.views.create, name='create')
+    path('create/', app.views.create, name='create'),
+    path('post/', app.views.post, name='post'),
+    path('mypage/', app.views.mypage, name='mypage'),
 ]

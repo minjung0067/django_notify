@@ -1,0 +1,30 @@
+{% load static %}
+{% load notifications_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="{% url 'main' %}">뒤로 가기</a>
+    <h1> 알림</h1>
+    {% if unread_messages %}
+        {% for unread_messages in unread_messages.all %}
+        <p> {{unread_messages}}</p>
+        {% endfor %}
+    {% endif %}
+
+        {% notifications_unread as unread_count %}
+        <p class="notify">{{ notifications_tags }}</p>
+                
+        {% if unread_count %}
+        <p class="notify">{{ unread_count }}개의 새 알림이 있습니다.</p>
+        {% else %}
+        <p> 0개의 새 알림이 있습니다.</p>
+                
+        {% endif %}
+</body>
+</html>
