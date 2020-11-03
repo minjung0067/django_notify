@@ -3,8 +3,6 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from .models import Post
 from django.utils import timezone
-from notifications.signals import notify 
-
 from django.contrib.auth.decorators import login_required
 
 def main(request):
@@ -46,11 +44,6 @@ def new(request):
     return render(request, 'new.html')
 
 def mypage(request):
-    recipients = User.objects.all()
-    user = request.user
-    if user in recipients:
-        unread_messages = user.notifications.unread()
-        return render(request, 'mypage.html',{'unread_messages':unread_messages})
     return render(request, 'mypage.html')
 
 def create(request):
@@ -60,12 +53,8 @@ def create(request):
     post.content = request.GET['content']
     post.pub_date = timezone.datetime.now()
     post.save()
-    notify.send(request.user, recipient = recipients, verb ='님 께서 새로운 글을 작성하셨습니다')
     return redirect('post')
 
 def post(request):
     posts = Post.objects.all()
-    if request.user.is_authenticated:
-        user = request.user
-        user.notifications.mark_all_as_read()
     return render(request, 'post.html', {'posts': posts})

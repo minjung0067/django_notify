@@ -1,5 +1,4 @@
 {% load static %}
-{% load notifications_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,20 +39,7 @@
         <a href="{% url 'main' %}">뒤로 가기</a>
         <h1> 알림</h1>
 
-        
-        {% notifications_unread as unread_count %}
-                
-        {% if unread_count %}
-        <h3 class="notify">{{ unread_count }}개의 새 알림이 있습니다.</h3>
-        {% else %}
-        <h3> 0개의 새 알림이 있습니다.</h3>
-                
-        {% endif %}
-        {% if unread_messages %}
-            {% for unread_messages in unread_messages.all %}
-            <p> {{unread_messages}}</p>
-            {% endfor %}
-        {% endif %}        
+   
     </div>
 
 </body>
