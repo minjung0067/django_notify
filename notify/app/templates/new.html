@@ -4,12 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>    
+        @font-face {
+        font-family: 'MapoFlowerIsland';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+        .all{
+            font-family: 'MapoFlowerIsland';
+            text-decoration: none;
+            align-items: center;
+            height: 100%;
+            line-height: 100%;
+            text-align: center;
+            margin-top: 15%;
+        }
+        .box, .btn{
+            height: 30px;
+            width: 300px;
+            margin: 5px;
+            font-size: 17px;
+            align-items: center;
+            border: 1;
+            outline: 0px;
+        }
+
+        </style>
 </head>
 <body>
-    <form action="{% url 'create' %}">
-    <input type="text" name="title">
-    <input type="text" name="content">
-    <input type="submit" value="작성하기">
+    <div class="all">
+        <form action="{% url 'create' %}">
+        <input class="box" type="text" name="title"><br>
+        <input class="box" type="text" name="content"><br>
+        <input class="btn" style="background-color:lightseagreen;color: white;" type="submit" value="작성하기">
+    </div>
+
 </form>
 </body>
 </html>

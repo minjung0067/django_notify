@@ -7,24 +7,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+    @font-face {
+    font-family: 'MapoFlowerIsland';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
+    .all{
+        font-family: 'MapoFlowerIsland';
+            text-decoration: none;
+            align-items: center;
+            height: 100%;
+            line-height: 100%;
+            text-align: center;
+            margin-top: 10%;
+            font-size: 20px;
+    }
+    a:link{
+            text-decoration: none;
+            color: black;
+        }
+        a:visited{
+            text-decoration: none;
+            color: lightseagreen;
+        }
+    </style>
+
 </head>
 <body>
-    <a href="{% url 'main' %}">뒤로 가기</a>
-    <h1> 알림</h1>
-    {% if unread_messages %}
-        {% for unread_messages in unread_messages.all %}
-        <p> {{unread_messages}}</p>
-        {% endfor %}
-    {% endif %}
+    <div class="all">
+        <a href="{% url 'main' %}">뒤로 가기</a>
+        <h1> 알림</h1>
 
+        
         {% notifications_unread as unread_count %}
-        <p class="notify">{{ notifications_tags }}</p>
                 
         {% if unread_count %}
-        <p class="notify">{{ unread_count }}개의 새 알림이 있습니다.</p>
+        <h3 class="notify">{{ unread_count }}개의 새 알림이 있습니다.</h3>
         {% else %}
-        <p> 0개의 새 알림이 있습니다.</p>
+        <h3> 0개의 새 알림이 있습니다.</h3>
                 
         {% endif %}
+        {% if unread_messages %}
+            {% for unread_messages in unread_messages.all %}
+            <p> {{unread_messages}}</p>
+            {% endfor %}
+        {% endif %}        
+    </div>
+
 </body>
 </html>

@@ -4,23 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>룰루랄라</title>
+    <style>    
+        @font-face {
+        font-family: 'MapoFlowerIsland';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+        .all{
+            font-family: 'MapoFlowerIsland';
+            text-decoration: none;
+            align-items: center;
+            height: 100%;
+            line-height: 100%;
+            text-align: center;
+            margin-top: 20%;
+            font-size: 20px;
+
+        }
+        a:link{
+            text-decoration: none;
+            color: black;
+        }
+        a:visited{
+            text-decoration: none;
+            color: lightseagreen;
+        }
+
+        </style>
 </head>
 <body>
-    {% if user.is_authenticated %}
-    <p>나는야 {{ user.username }}</p>
-    <a href="javascript:{document.getElementById('logout').submit()}">로그아웃</a>
-    <form id="logout" method="POST" action="{% url 'logout' %}">
-        {% csrf_token %} <input type="hidden" />
-    </form>
-    
-    <a href="{% url 'mypage' %}">마이페이지</a>
-    <a href="{% url 'post' %}">게시판으로</a>
+    <div class="all">
+        {% if user.is_authenticated %}
+        <p>나는야 {{ user.username }}</p>
+        <a style="font-size: 15px;"href="javascript:{document.getElementById('logout').submit()}">로그아웃</a>
+        <form id="logout" method="POST" action="{% url 'logout' %}">
+            {% csrf_token %} <input type="hidden" />
+        </form>
+        <br>
+        <a href="{% url 'mypage' %}">마이페이지</a>
+        <a href="{% url 'post' %}">게시판으로</a>
 
-    {% else %}
-        <a href="{% url 'signup' %}">회원가입</a>
-        <a href="{% url 'login' %}">로그인</a>
-    {% endif %}
-        
+        {% else %}
+            <a href="{% url 'signup' %}">회원가입</a>
+            <a href="{% url 'login' %}">로그인</a>
+        {% endif %}
+                    
+    </div>
+
 
 
 </body>
